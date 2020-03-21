@@ -1,0 +1,34 @@
+{
+    "$schema": ".\\schema.json",
+    "configurations": [{
+        "state": "enabled",
+        "currency_pair": "BTCUSD",
+        "type": "crossing-up",
+        "value": 6200,
+        "occurrence": "always",
+        "message": [
+            "[$currency_from$-$currency_to$] $type$ $level$",
+            "Last price $last$"
+        ]
+    }, {
+        "state": "enabled",
+        "currency_pair": "BTCUSD",
+        "type": "crossing-down",
+        "value": 6200,
+        "occurrence": "always",
+        "message": [
+            "[$currency_from$-$currency_to$] $type$ $level$",
+            "Last price $last$"
+        ]
+    }, {
+        "state": "enabled",
+        "currency_pair": "BTCUSD",
+        "type": "crossing",
+        "value": 6200,
+        "occurrence": "once",
+        "message": [
+            "[$currency_from$-$currency_to$] $type$ $level$",
+            "Last price $last$"
+        ]
+    }]
+}
