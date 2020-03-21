@@ -1,0 +1,122 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "required": [
+        "$schema",
+        "configurations"
+    ],
+    "properties": {
+        "$schema": {
+            "$id": "#/properties/$schema",
+            "type": "string",
+            "title": "The $schema Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                ".\\schema.json"
+            ]
+        },
+        "configurations": {
+            "$id": "#/properties/configurations",
+            "type": "array",
+            "title": "The Configurations Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "items": {
+                "$id": "#/properties/configurations/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [{
+                        "occurrence": "always",
+                        "state": "enabled",
+                        "message": [
+                            "[$currency_from$-$currency_to$] $type$ $level$",
+                            "Last price $last$"
+                        ],
+                        "type": "crossing-up",
+                        "currency_pair": "BTCUSD",
+                        "value": "6200"
+                    },
+                    {
+                        "message": [
+                            "[$currency_from$-$currency_to$] $type$ $level$",
+                            "Last price $last$"
+                        ],
+                        "state": "enabled",
+                        "currency_pair": "BTCUSD",
+                        "type": "crossing-down",
+                        "value": "6200",
+                        "occurrence": "always"
+                    }
+                ],
+                "required": [
+                    "state",
+                    "currency_pair",
+                    "type",
+                    "value",
+                    "occurrence",
+                    "message"
+                ],
+                "properties": {
+                    "state": {
+                        "$id": "#/properties/configurations/items/properties/state",
+                        "type": "string",
+                        "title": "The State Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": ["enabled", "disabled"]
+                    },
+                    "currency_pair": {
+                        "$id": "#/properties/configurations/items/properties/currency_pair",
+                        "type": "string",
+                        "title": "The Currency_pair Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": ["BTCUSD", "BTCEUR", "EURUSD", "XRPUSD", "XRPEUR", "XRPBTC", "LTCUSD", "LTCEUR", "LTCBTC", "ETHUSD", "ETHEUR", "ETHBTC", "BCHUSD", "BCHEUR", "BCHBTC"]
+                    },
+                    "type": {
+                        "$id": "#/properties/configurations/items/properties/type",
+                        "type": "string",
+                        "title": "The Type Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": ["crossing-up", "crossing-down", "crossing"]
+                    },
+                    "value": {
+                        "$id": "#/properties/configurations/items/properties/value",
+                        "type": "integer",
+                        "title": "The Value Schema",
+                        "description": "An explanation about the purpose of this instance."
+                    },
+                    "occurrence": {
+                        "$id": "#/properties/configurations/items/properties/occurrence",
+                        "type": "string",
+                        "title": "The Occurrence Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "once",
+                        "examples": ["always", "once"]
+                    },
+                    "message": {
+                        "$id": "#/properties/configurations/items/properties/message",
+                        "type": "array",
+                        "title": "The Message Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": [],
+                        "items": {
+                            "$id": "#/properties/configurations/items/properties/message/items",
+                            "type": "string",
+                            "title": "The Items Schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "examples": ["$currency_to$", "$type$", "$level$", "$last$", "$currency_from$"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
