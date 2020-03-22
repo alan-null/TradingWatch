@@ -114,6 +114,13 @@
                             "description": "An explanation about the purpose of this instance.",
                             "examples": ["$currency_to$", "$type$", "$level$", "$last$", "$currency_from$"]
                         }
+                    },
+                    "expiration": {
+                        "$id": "#/properties/configurations/items/properties/expiration",
+                        "type": "string",
+                        "title": "The Expiration Schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "2099-03-22T22:01:00Z"
                     }
                 }
             }

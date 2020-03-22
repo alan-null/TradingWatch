@@ -21,6 +21,11 @@ function Write-Message {
     New-BurntToastNotification -Text $messages -Sound 'Default' -SnoozeAndDismiss
 }
 
+function Test-Expired {
+    param ($conf)
+    $conf.expiration -and $conf.expiration -le [datetime]::UtcNow
+}
+
 function Get-Stats {
     param ()
     $stats = Invoke-WebRequest -Uri "https://www.bitstamp.net/api/v2/ticker/btcusd" -Method Get | ConvertFrom-Json
@@ -31,7 +36,7 @@ $config = Get-ChildItem $PSScriptRoot -Filter "config.json" | Select-Object -Fir
 do {
     $anyEnabled = $false
     Clear-Host
-    $config.configurations | % {
+    $config.configurations | ? { !(Test-Expired $_) } | % {
         $conf = $_
         if ($conf.state -eq "enabled") {
             $anyEnabled = $true

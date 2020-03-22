@@ -4,7 +4,7 @@
         "state": "enabled",
         "currency_pair": "BTCUSD",
         "type": "crossing-up",
-        "value": 6200,
+        "value": 6400,
         "occurrence": "always",
         "message": [
             "[$currency_from$-$currency_to$] $type$ $level$",
@@ -14,7 +14,7 @@
         "state": "enabled",
         "currency_pair": "BTCUSD",
         "type": "crossing-down",
-        "value": 6200,
+        "value": 6000,
         "occurrence": "always",
         "message": [
             "[$currency_from$-$currency_to$] $type$ $level$",
@@ -25,10 +25,11 @@
         "currency_pair": "BTCUSD",
         "type": "crossing",
         "value": 6200,
-        "occurrence": "once",
+        "occurrence": "always",
         "message": [
             "[$currency_from$-$currency_to$] $type$ $level$",
             "Last price $last$"
-        ]
+        ],
+        "expiration": "2099-03-22T22:01:00Z"
     }]
 }
