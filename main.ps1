@@ -27,29 +27,32 @@ function Test-Expired {
 }
 
 function Get-Stats {
-    param ()
-    $stats = Invoke-WebRequest -Uri "https://www.bitstamp.net/api/v2/ticker/btcusd" -Method Get | ConvertFrom-Json
+    param ($ids)
+    $list = [string]::Join(',', $ids)
+    $stats = Invoke-WebRequest -Uri "https://api.coingecko.com/api/v3/simple/price?ids=$list&vs_currencies=usd" -Method Get | ConvertFrom-Json
     $stats
 }
 
 $config = Get-ChildItem $PSScriptRoot -Filter "config.json" | Select-Object -First 1 | Get-Content | ConvertFrom-Json
+$ids = $config.configurations.currency_pair | Select-Object -Unique
 do {
     $anyEnabled = $false
     Clear-Host
+    $stats = Get-Stats $ids
     $config.configurations | ? { !(Test-Expired $_) } | % {
         $conf = $_
         if ($conf.state -eq "enabled") {
             $anyEnabled = $true
             [double]$level = [System.Double]::Parse($conf.value)
             $prev = $conf.prev
-            $stats = Get-Stats
-            [double]$last = [System.Double]::Parse($stats.last)
+            $curka = $conf.currency_pair
+            [double]$last = [System.Double]::Parse($stats."$curka".usd)
 
             $obj = @{
                 level         = $level
                 last          = $last
-                currency_from = $conf.currency_pair.Substring(0, 3)
-                currency_to   = $conf.currency_pair.Substring(3, 3)
+                currency_from = $conf.currency_pair
+                currency_to   = 'USD'
                 type          = $conf.type
             }
 
@@ -119,6 +122,6 @@ do {
             }
         }
     }
-    Start-Sleep -Seconds 10
+    Start-Sleep -Seconds 30
 } while ($anyEnabled)
 

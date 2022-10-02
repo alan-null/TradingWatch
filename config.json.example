@@ -1,35 +1,41 @@
 {
     "$schema": ".\\schema.json",
-    "configurations": [{
-        "state": "enabled",
-        "currency_pair": "BTCUSD",
-        "type": "crossing-up",
-        "value": 6400,
-        "occurrence": "always",
-        "message": [
-            "[$currency_from$-$currency_to$] $type$ $level$",
-            "Last price $last$"
-        ]
-    }, {
-        "state": "enabled",
-        "currency_pair": "BTCUSD",
-        "type": "crossing-down",
-        "value": 6000,
-        "occurrence": "always",
-        "message": [
-            "[$currency_from$-$currency_to$] $type$ $level$",
-            "Last price $last$"
-        ]
-    }, {
-        "state": "enabled",
-        "currency_pair": "BTCUSD",
-        "type": "crossing",
-        "value": 6200,
-        "occurrence": "always",
-        "message": [
-            "[$currency_from$-$currency_to$] $type$ $level$",
-            "Last price $last$"
-        ],
-        "expiration": "2099-03-22T22:01:00Z"
-    }]
+    "configurations": [
+        {
+            "state": "enabled",
+            "currency_pair": "bitcoin",
+            "type": "crossing-up",
+            "value": 6400,
+            "occurrence": "always",
+            "message": [
+                "[$currency_from$-$currency_to$] $type$ $level$",
+                "Last price $last$"
+            ],
+            "expiration": "2099-03-22T22:01:00Z"
+        },
+        {
+            "state": "enabled",
+            "currency_pair": "bitcoin",
+            "type": "crossing-down",
+            "value": 6000,
+            "occurrence": "always",
+            "message": [
+                "[$currency_from$-$currency_to$] $type$ $level$",
+                "Last price $last$"
+            ],
+            "expiration": "2099-03-22T22:01:00Z"
+        },
+        {
+            "state": "enabled",
+            "currency_pair": "Polkadot",
+            "type": "crossing",
+            "value": 10,
+            "occurrence": "always",
+            "message": [
+                "[$currency_from$-$currency_to$] $type$ $level$",
+                "Last price $last$"
+            ],
+            "expiration": "2099-03-22T22:01:00Z"
+        }
+    ]
 }
